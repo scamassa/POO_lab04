@@ -23,22 +23,15 @@ public class Matrix {
         this.matrix = new int[m][n];
         this.modulo = modulo;
 
-        if(values.length != m || values[0].length != n) {
+        if(m < 0 || n < 0) {
             throw new RuntimeException();
         }
 
         for(int i = 0; i < this.m; i++) {
             for(int j = 0; j < this.n; j++) {
-                // TODO check modulo
-                matrix[i][j] = Math.floorMod(values[i][j], this.modulo);
+                matrix[i][j] = (i >= values.length || j >= values[0].length) ? 0 : Math.floorMod(values[i][j], this.modulo);
             }
         }
-        /*try {
-
-
-        }catch(RuntimeException e) {
-            System.out.println("Values array size doesn't match matrix size.");
-        }*/
     }
 
     public int getM() {
@@ -56,6 +49,8 @@ public class Matrix {
     public void setValue(int i, int j, int value) {
         matrix[i][j] = value;
     }
+
+    public int getModulo() { return modulo; }
 
     public void displayMatrix() {
 
