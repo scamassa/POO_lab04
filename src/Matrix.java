@@ -41,6 +41,14 @@ public class Matrix {
         }*/
     }
 
+    public int getM() {
+        return m;
+    }
+
+    public int getN() {
+        return n;
+    }
+
     public void displayMatrix() {
 
         for(int i = 0; i < this.m; i++) {
