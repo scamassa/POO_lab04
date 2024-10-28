@@ -49,6 +49,14 @@ public class Matrix {
         return n;
     }
 
+    public int getValue(int i, int j) {
+        return matrix[i][j];
+    }
+
+    public void setValue(int i, int j, int value) {
+        matrix[i][j] = value;
+    }
+
     public void displayMatrix() {
 
         for(int i = 0; i < this.m; i++) {
