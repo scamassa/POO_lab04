@@ -17,42 +17,41 @@ public class Matrix {
         }
     }
 
-    public Matrix(int m, int n, int modulo, int[][] values) {
-        this.m = m;
-        this.n = n;
+    public Matrix(int[][] values, int mod) {
+        this.m = values.length;
+        this.n = values[0].length;
         this.matrix = new int[m][n];
-        this.modulo = modulo;
+        this.modulo = mod;
 
-        if(m < 0 || n < 0) {
-            throw new RuntimeException();
-        }
 
         for(int i = 0; i < this.m; i++) {
             for(int j = 0; j < this.n; j++) {
-                matrix[i][j] = (i >= values.length || j >= values[0].length) ? 0 : Math.floorMod(values[i][j], this.modulo);
+                matrix[i][j] = Math.floorMod(values[i][j], this.modulo);
             }
         }
     }
 
-    public int getM() {
-        return m;
+    public static Matrix matrixOperation(Matrix m1, MatrixOperation operation, Matrix m2) {
+        if (m1.modulo != m2.modulo) {
+            throw new RuntimeException("mods are not equal");
+        }
+
+        int maxM = Math.max(m1.m, m2.m);
+        int maxN = Math.max(m1.n, m2.n);
+
+        int[][] resultValues = new int[maxM][maxN];
+
+        for(int i = 0; i < maxM; i++) {
+            for(int j = 0; j < maxN; j++) {
+
+                int a = (i > m1.m || j > m1.n) ? 0 : m1.matrix[i][j];
+                int b = (i > m2.m || j > m2.n) ? 0 : m2.matrix[i][j];
+
+                resultValues[i][j] = operation.applyOperation(a, b);
+            }
+        }
+        return new Matrix(resultValues, m1.modulo);
     }
-
-    public int getN() {
-        return n;
-    }
-
-    public int[][] getAllValues() { return matrix; }
-
-    public int getValue(int i, int j) {
-        return matrix[i][j];
-    }
-
-    public void setValue(int i, int j, int value) {
-        matrix[i][j] = value;
-    }
-
-    public int getModulo() { return modulo; }
 
     @Override
     public String toString() {
