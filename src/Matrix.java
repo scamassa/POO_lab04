@@ -44,8 +44,8 @@ public class Matrix {
         for(int i = 0; i < maxM; i++) {
             for(int j = 0; j < maxN; j++) {
 
-                int a = (i > m1.m || j > m1.n) ? 0 : m1.matrix[i][j];
-                int b = (i > m2.m || j > m2.n) ? 0 : m2.matrix[i][j];
+                int a = (i >= m1.m || j >= m1.n) ? 0 : m1.matrix[i][j];
+                int b = (i >= m2.m || j >= m2.n) ? 0 : m2.matrix[i][j];
 
                 resultValues[i][j] = operation.applyOperation(a, b);
             }
