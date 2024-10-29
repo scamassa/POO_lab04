@@ -54,14 +54,15 @@ public class Matrix {
 
     public int getModulo() { return modulo; }
 
-    public void displayMatrix() {
-
+    @Override
+    public String toString() {
+        String s = "";
         for(int i = 0; i < this.m; i++) {
             for(int j = 0; j < this.n; j++) {
-                System.out.print(this.matrix[i][j] + " ");
+                s = s.concat(this.matrix[i][j] + " ");
             }
-            System.out.print('\n');
+            s = s.concat("\n");
         }
-
+        return s;
     }
 }
