@@ -42,6 +42,8 @@ public class Matrix {
         return n;
     }
 
+    public int[][] getAllValues() { return matrix; }
+
     public int getValue(int i, int j) {
         return matrix[i][j];
     }
