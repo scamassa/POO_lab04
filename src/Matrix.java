@@ -8,6 +8,12 @@ public class Matrix {
     private int m, n, modulo;
     private int[][] matrix;
 
+    /*
+     * Constructeur d'une matrice avec des valeurs aléatoires.
+     * @param m, n les dimensions de la matrice
+     * @param mod le modulo de la matrice
+     * @throws RuntimeException
+     */
     public Matrix(int m, int n, int mod) {
         if(m < 0 || n < 0) {
             throw new RuntimeException("Invalid matrix size");
@@ -29,6 +35,12 @@ public class Matrix {
         }
     }
 
+    /*
+     * Constructeur d'une matrice avec des valeurs données.
+     * @param values le tableau 2d de int contenant les valeurs que contiendra la matrice
+     * @param mod le modulo de la matrice
+     * @throws RuntimeException
+     */
     public Matrix(int[][] values, int mod) {
         if (values.length == 0 || values[0].length == 0) {
             this.m = 0;
@@ -53,6 +65,7 @@ public class Matrix {
      * @param m1 la première matrice
      * @param operation la MatrixOperation que l'on souhaite appliquer
      * @param m2 la deuxième matrice
+     * @throws RuntimeException
      */
     public static Matrix matrixOperation(Matrix m1, MatrixOperation operation, Matrix m2) {
         if (m1.modulo != m2.modulo) {
