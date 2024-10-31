@@ -65,7 +65,7 @@ public class Test {
         testSubMatrix(m1, m2);
         testMultMatrix(m1, m2);
 
-        System.out.println("passed");
+        System.out.println("no error");
     }
 
     /*
@@ -82,7 +82,7 @@ public class Test {
         testSubMatrix(m1, m2);
         testMultMatrix(m1, m2);
 
-        System.out.println("-> passed");
+        System.out.println("no error");
     }
 
     public static void main(String[] args) {
